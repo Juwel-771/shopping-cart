@@ -17,7 +17,7 @@ Route::get('/product_details', function () {
 
 Route::get('/account', function () {
     return view('account');
-});
+})->name('account');
 
 //Route::get('/cart', function () {
 //    return view('cart');
@@ -29,4 +29,4 @@ Route::get('/cart',[ProductController::class,'viewCart']);
 Route::get('/remove-item/{rowId}',[ProductController::class,'removeItem']);
 Route::resource('/users',UserController::class);
 
-Route::get('/add_product',[ProductController::class,'add_products']);
+Route::get('/add_product',[ProductController::class,'add_products'])->middleware('auth');

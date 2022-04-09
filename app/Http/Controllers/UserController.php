@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkuser')->only('store');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +26,9 @@ class UserController extends Controller
                         ->first();
 
         if(isset($userInfo) && $userInfo!=null){
-            return redirect('/add_product');
+            $product_controller = new ProductController();
+            return $product_controller->add_products();
+            // return redirect('/add_product');
         }else{
             return redirect()->back();
         }
