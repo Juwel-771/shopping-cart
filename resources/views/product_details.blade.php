@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf_token" content="{{csrf_token()}}">
     <title>All Products | RedStore</title>
     <link rel="stylesheet" href="{{ url('/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -76,7 +77,7 @@
                     <input type="hidden" name="price" value="{{$product->price}}">
                     <input type="hidden" name="name" value="{{$product->name}}">
                     <label>Amount</label>
-                <input type="number" name="quantity" value="1">
+                <input type="text" name="quantity" value="1" onchange="validateAmount(this.value,{{$product->id}})">
                 <button type="submit" class="btn">Add to cart</button>
                 </form>
 
@@ -156,7 +157,8 @@
     </div>
 
     <!-- javascript -->
-
+    <script src="/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         var MenuItems = document.getElementById("MenuItems");
         MenuItems.style.maxHeight = "0px";

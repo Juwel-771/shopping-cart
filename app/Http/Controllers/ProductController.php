@@ -185,4 +185,8 @@ class ProductController extends Controller
 
         return view('welcome',compact('featured_products','latest_products'));
     }
+
+    public function validateAmount(Request $request){
+        dd($request->all());
+    }
 }

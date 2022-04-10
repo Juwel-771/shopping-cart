@@ -30,3 +30,4 @@ Route::get('/remove-item/{rowId}',[ProductController::class,'removeItem']);
 Route::resource('/users',UserController::class);
 
 Route::get('/add_product',[ProductController::class,'add_products'])->middleware('auth');
+Route::post('/products/validate-amount',[ProductController::class,'validateAmount']);
