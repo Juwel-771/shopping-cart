@@ -75,6 +75,15 @@
                                     {{ session()->get('error') }}
                                 </div>
                             @endif
+                            @if($errors->any())
+                                <div class="alert alert-warning alert-dismissable fade show">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
                         </div>
                         <form id="RegForm" action="/users" method="POST">
                             @csrf

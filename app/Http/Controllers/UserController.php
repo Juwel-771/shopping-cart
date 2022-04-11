@@ -53,6 +53,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'uname'=>'required|max:40',
+            'email'=>'required|max:50|unique:users',
+            'pass'=>'required|min:8',
+            'mobile'=>'numeric|max:11'
+        ]);
+
         User::insert([
             'name'=>$request->has('uname')?$request->get('uname'):"",
             'email'=>$request->has('email')?$request->get('email'):"",
